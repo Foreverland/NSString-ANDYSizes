@@ -11,22 +11,28 @@
 
 + (CGFloat)heightForString:(NSString *)string width:(CGFloat)width font:(UIFont *)font
 {
-    CGSize size = [string sizeWithFont:font
-                     constrainedToSize:CGSizeMake(width, 1000.0f) lineBreakMode:NSLineBreakByWordWrapping];
-    return size.height;
+    NSDictionary *attributes = @{ NSFontAttributeName : font };
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+                                       options:NSStringDrawingUsesLineFragmentOrigin
+                                    attributes:attributes
+                                       context:nil];
+    return CGRectGetHeight(rect);
 }
 
 + (CGFloat)heightForString:(NSString *)string font:(UIFont *)font
 {
-    CGSize size = [string sizeWithFont:font
-                     constrainedToSize:CGSizeMake(1000.0f, 1000.0f) lineBreakMode:NSLineBreakByWordWrapping];
-    return size.height;
+    NSDictionary *attributes = @{ NSFontAttributeName : font };
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+                                       options:NSStringDrawingUsesLineFragmentOrigin
+                                    attributes:attributes
+                                       context:nil];
+    return CGRectGetHeight(rect);
 }
 
 + (CGFloat)widthForString:(NSString *)string font:(UIFont *)font
 {
-    CGSize size = [string sizeWithFont:font
-                     constrainedToSize:CGSizeMake(1000.0f, 1000.0f) lineBreakMode:NSLineBreakByWordWrapping];
+    NSDictionary *attributes = @{ NSFontAttributeName : font };
+    CGSize size = [string sizeWithAttributes:attributes];
     return size.width;
 }
 
