@@ -9,30 +9,30 @@
 
 @implementation NSString (ANDYSizes)
 
-+ (CGFloat)heightForString:(NSString *)string width:(CGFloat)width font:(UIFont *)font
+- (CGFloat)heightUsingFont:(UIFont *)font andWidth:(CGFloat)width
 {
     NSDictionary *attributes = @{ NSFontAttributeName : font };
-    CGRect rect = [string boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
-                                       options:NSStringDrawingUsesLineFragmentOrigin
-                                    attributes:attributes
-                                       context:nil];
+    CGRect rect = [self boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                  attributes:attributes
+                                     context:nil];
     return CGRectGetHeight(rect);
 }
 
-+ (CGFloat)heightForString:(NSString *)string font:(UIFont *)font
+- (CGFloat)heightUsingFont:(UIFont *)font
 {
     NSDictionary *attributes = @{ NSFontAttributeName : font };
-    CGRect rect = [string boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
-                                       options:NSStringDrawingUsesLineFragmentOrigin
-                                    attributes:attributes
-                                       context:nil];
+    CGRect rect = [self boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                  attributes:attributes
+                                     context:nil];
     return CGRectGetHeight(rect);
 }
 
-+ (CGFloat)widthForString:(NSString *)string font:(UIFont *)font
+- (CGFloat)widthUsingFont:(UIFont *)font
 {
     NSDictionary *attributes = @{ NSFontAttributeName : font };
-    CGSize size = [string sizeWithAttributes:attributes];
+    CGSize size = [self sizeWithAttributes:attributes];
     return size.width;
 }
 
