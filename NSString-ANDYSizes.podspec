@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "NSString-ANDYSizes"
-  s.version = "1.0"
+  s.version = "2.0"
   s.summary = "Calculates the size of your strings"
   s.description = <<-DESC
                    * Calculates the size of your strings
