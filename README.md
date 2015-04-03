@@ -1,3 +1,9 @@
+# Installation
+
+```ruby
+pod 'NSString-ANDYSizes'
+```
+
 NSString-ANDYSizes
 ==================
 
